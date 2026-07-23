@@ -1,9 +1,13 @@
-import SignIn from './(auth)/signin/page';
-import SignUp from './(auth)/signup/page'
+import { SafeAreaProvider} from 'react-native-safe-area-context';
+import { StatusBar } from 'expo-status-bar';
+import { Stack } from 'expo-router';
 
 
 export default function RootLayout() {
     return(
-        <SignUp/>
+        <SafeAreaProvider>
+            <StatusBar style='dark' translucent/>
+            <Stack screenOptions={{headerShown: false}}/>      
+        </SafeAreaProvider>
     )
 };

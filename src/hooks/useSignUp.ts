@@ -2,9 +2,10 @@ import {useForm} from 'react-hook-form';
 import {z} from 'zod';
 import {zodResolver} from '@hookform/resolvers/zod'
 import {useRouter} from 'expo-router'
+import { authServices } from '@/services/auth-services';
 
 const SignupSchema = z.object({
-    name: z.string().min(1,"Nome é obrigatório"),
+    username: z.string().min(1,"Nome é obrigatório"),
     email: z.email("Email é obrigatório"),
     password: z.string().min(6, "A senha é obrigatório"),
     confirmPassword: z.string().min(6, "A confirmação de senha é obrigatório")
@@ -25,10 +26,11 @@ const useSignup = () => {
     })
 
 
-    const onSubmit = () => {
+    const onSubmit = async(data: SignupFormData) => {
         try {
 
-
+            await authServices.signUp(data.email, data.password, data.username);
+            router.replace('/(painel)/home/page')
             
         } catch (error) {
             console.log(error)
@@ -40,7 +42,8 @@ const useSignup = () => {
         control,
         handleSubmit,
         errors,
-        isSubmitting
+        isSubmitting,
+        onSubmit
     }
 }
 
