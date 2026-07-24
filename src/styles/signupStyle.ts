@@ -40,11 +40,52 @@ export const styles = StyleSheet.create({
         color: COLORS.subTitle
     },
     box2:{
-        height: Dimensions.get('window').height * 0.45,
-        backgroundColor:'blue'
+        flex: 0.50,
+        padding: 10,
+    },
+    nameBox2:{
+        fontSize: 20,
+        marginTop: -5,
+        paddingTop: 5,
+        color: COLORS.primary
+    },
+    containerInput:{
+        flexDirection: 'row',
+        justifyContent:'center',
+        alignItems:'center',
+        padding:10,
+        paddingLeft: 8,
+        borderRadius: 10,
+        marginTop: 10,
+        marginBottom:5,
+        backgroundColor: COLORS.back2,
+        borderWidth: 0.5,
+        borderColor: COLORS.text
+    },
+    textInput:{
+        
     },
     box3:{
-         height: Dimensions.get('window').height * 0.25,
-         backgroundColor:'red'
+         flex: 0.25,
+    },
+    containerBox3:{
+        flex:1,
+        padding: 10
+    },
+    btnBox3:{
+        backgroundColor:COLORS.icon,
+        padding: 15,
+        borderRadius: 10,
+        
+    },
+    viewConta:{
+        flexDirection:'row',
+        gap: 5,
+        flex: 1,
+        backgroundColor:'blue'
+    },
+    textBtn:{
+        alignSelf:'center',
+        fontSize: 20
     }
 })
