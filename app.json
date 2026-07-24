@@ -27,7 +27,8 @@
     },
     "plugins": [
       "expo-router",
-      "@react-native-firebase/auth"
+      "@react-native-firebase/auth",
+      "@react-native-vector-icons/ionicons"
     ]
   }
 }
