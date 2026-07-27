@@ -37,13 +37,18 @@ const useSignup = () => {
         }
     }
 
+    const handleLogin = () => {
+        router.replace('/(auth)/signin/page')
+    }
+ 
 
     return{
         control,
         handleSubmit,
         errors,
         isSubmitting,
-        onSubmit
+        onSubmit,
+        handleLogin
     }
 }
 

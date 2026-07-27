@@ -73,19 +73,35 @@ export const styles = StyleSheet.create({
         padding: 10
     },
     btnBox3:{
-        backgroundColor:COLORS.icon,
+        backgroundColor:COLORS.primary,
         padding: 15,
         borderRadius: 10,
-        
+        flexDirection: 'row',
+        gap: 5,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     viewConta:{
         flexDirection:'row',
         gap: 5,
         flex: 1,
-        backgroundColor:'blue'
+        justifyContent:'center',
+        alignItems:'flex-end',
+        paddingBottom: 12
     },
     textBtn:{
         alignSelf:'center',
-        fontSize: 20
+        fontSize: 20,
+        color:COLORS.white
+    },
+    textFoot:{
+        fontSize: 15,
+        color:COLORS.subTitle
+    },
+    textFoot2:{
+        color:COLORS.primary
+    },
+    errorMessage:{
+        color: 'red'
     }
 })

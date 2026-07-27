@@ -11,12 +11,13 @@ interface SignupProps {
     handleSubmit: UseFormHandleSubmit<SignupFormData>,
     errors: FieldErrors<SignupFormData>,
     isSubmitting: boolean,
-    onSubmit: (data: SignupFormData) => Promise<void>
+    onSubmit: (data: SignupFormData) => Promise<void>,
+    handleLogin: () => void
 }
 
 
 
-export default function SignupScreen({control, handleSubmit, errors, isSubmitting, onSubmit}: SignupProps) {
+export default function SignupScreen({control, handleSubmit, errors, isSubmitting, onSubmit,handleLogin}: SignupProps) {
     return(
         <View style={styles.container}>
             <View style={styles.box1}>
@@ -49,10 +50,12 @@ export default function SignupScreen({control, handleSubmit, errors, isSubmittin
                                     style={styles.textInput}
 
                                 />
+                               
                             </View>
                         )}
                     />
                 </View>
+                    {errors.username && <Text style={styles.errorMessage}>{errors.username.message}</Text>} 
 
                 <Text style={styles.nameBox2}>Email</Text>   
                 <View style={styles.containerInput}>
@@ -126,14 +129,15 @@ export default function SignupScreen({control, handleSubmit, errors, isSubmittin
             
             <View style={styles.box3}>
                 <View style={styles.containerBox3}>
-                        <TouchableOpacity style={styles.btnBox3}>
-                            <Text style={styles.textBtn}>Cadastrar...</Text>
+                        <TouchableOpacity style={styles.btnBox3} onPress={handleSubmit(onSubmit)}>
+                            <Text style={styles.textBtn}>{isSubmitting ? 'Cadastrando...' : 'Cadastrar'}</Text>
+                            <Ionicons name='arrow-forward-outline' size={20} color={COLORS.white}/>
                         </TouchableOpacity>
 
                         <View style={styles.viewConta}>
-                            <Text>Já tem uma conta?</Text>
-                            <TouchableOpacity>
-                                <Text>Entre agora</Text>
+                            <Text style={styles.textFoot}>Já tem uma conta?</Text>
+                            <TouchableOpacity onPress={handleLogin}>
+                                <Text style={styles.textFoot2}>Entre agora</Text>
                             </TouchableOpacity>
                         </View>
                 </View>
