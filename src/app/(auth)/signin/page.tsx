@@ -1,4 +1,4 @@
-import SignInScreen from "@/screens/signin"
+import SignInScreen from "../../../screens/signin/index"
 
 
 

@@ -69,7 +69,8 @@ export default function SignupScreen({control, handleSubmit, errors, isSubmittin
                                 <TextInput
                                     placeholder='hello@example.com'
                                     placeholderTextColor={COLORS.text}
-                                    autoCapitalize='words'
+                                    keyboardType='email-address'
+                                    autoCapitalize='none'
                                     onBlur={onBlur}
                                     onChangeText={onChange}
                                     value={value}
@@ -79,6 +80,7 @@ export default function SignupScreen({control, handleSubmit, errors, isSubmittin
                         )}
                     />
                 </View>
+                {errors.email && <Text style={styles.errorMessage}>{errors.email.message}</Text>}
 
                 <Text style={styles.nameBox2}>Senha</Text>   
                 <View style={styles.containerInput}>
@@ -92,7 +94,8 @@ export default function SignupScreen({control, handleSubmit, errors, isSubmittin
                                 <TextInput
                                     placeholder='********'
                                     placeholderTextColor={COLORS.text}
-                                    autoCapitalize='words'
+                                    secureTextEntry={true}
+                                    autoCapitalize='none'
                                     onBlur={onBlur}
                                     onChangeText={onChange}
                                     value={value}
@@ -102,6 +105,7 @@ export default function SignupScreen({control, handleSubmit, errors, isSubmittin
                         )}
                     />
                 </View>
+                {errors.password && <Text style={styles.errorMessage}>{errors.password.message}</Text>}
 
                 <Text style={styles.nameBox2}>Confirmar senha</Text>   
                 <View style={styles.containerInput}>
@@ -115,7 +119,8 @@ export default function SignupScreen({control, handleSubmit, errors, isSubmittin
                                 <TextInput
                                     placeholder='********'
                                     placeholderTextColor={COLORS.text}
-                                    autoCapitalize='words'
+                                    secureTextEntry={true}
+                                    autoCapitalize='none'
                                     onBlur={onBlur}
                                     onChangeText={onChange}
                                     value={value}
@@ -125,6 +130,7 @@ export default function SignupScreen({control, handleSubmit, errors, isSubmittin
                         )}
                     />
                 </View>
+                {errors.confirmPassword && <Text style={styles.errorMessage}>{errors.confirmPassword.message}</Text>}
             </View>
             
             <View style={styles.box3}>

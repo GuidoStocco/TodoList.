@@ -1,10 +1,7 @@
-import {View, Text} from 'react-native';
-
+import HomeScreen from "@/screens/home"
 
 export default function Home() {
     return(
-        <View>
-            <Text>OLA HOME</Text>
-        </View>
+        <HomeScreen/>
     )
 }

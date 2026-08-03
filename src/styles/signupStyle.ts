@@ -102,6 +102,6 @@ export const styles = StyleSheet.create({
         color:COLORS.primary
     },
     errorMessage:{
-        color: 'red'
+        color: 'red',
     }
 })
