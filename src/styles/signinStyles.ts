@@ -75,22 +75,28 @@ export const styles = StyleSheet.create({
         fontSize:14,
         color:COLORS.subTitle
     },
-    box3:{
-        flex:0.6
-    },
-    containerBox3:{
-        flex:1,
-        alignItems:'center',
-        justifyContent:'space-between',
-        padding:10
-    },
-    btnEntrar:{
+    containerBtnEntrar:{
         backgroundColor:COLORS.primary,
         width:'100%',
         height:60,
         justifyContent:'center',
         alignItems:'center',
         borderRadius:8,
+        marginTop: 60,
+        flexDirection:'row',
+        gap:5
+    },
+    box3:{
+        flex:0.6
+    },
+    containerBox3:{
+        flex:1,
+        alignItems:'center',
+        justifyContent:'flex-end',
+        padding:10
+    },
+    btnEntrar:{
+        
     },
     textBtnEntrar:{
         fontSize:20,
@@ -107,5 +113,8 @@ export const styles = StyleSheet.create({
     },
     textBtnCriarConta:{
         color:COLORS.primary
+    },
+    errorMessage:{
+        color:'red'
     }
 })

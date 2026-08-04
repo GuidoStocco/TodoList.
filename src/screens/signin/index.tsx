@@ -2,9 +2,20 @@ import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import { styles } from '@/styles/signinStyles';
 import {Ionicons} from '@react-native-vector-icons/ionicons';
 import { COLORS } from '@/constants/COLORS';
+import { SigninFormData } from '@/hooks/useSignIn';
+import {Control, Controller, FieldErrors, UseFormHandleSubmit} from 'react-hook-form';
 
 
-export default function SignInScreen() {
+interface SigninProps {
+    control: Control<SigninFormData>
+    errors: FieldErrors<SigninFormData>
+    isSubmitting: boolean
+    handleSubmit: UseFormHandleSubmit<SigninFormData>
+    handleScreenCadastrar: () => void
+    onSubmit: (data: SigninFormData) => Promise<void>
+}
+
+export default function SignInScreen({control, errors, handleScreenCadastrar, handleSubmit,isSubmitting, onSubmit}: SigninProps) {
     return(
         <View style={styles.container}>
 
@@ -23,44 +34,70 @@ export default function SignInScreen() {
                     <Text style={styles.emailTitle}>Email</Text>
                     <View style={styles.containerInput}>
                         <Ionicons name='mail-outline' size={28} color={COLORS.subTitle}/>
-                        <TextInput 
-                            placeholder='ravena@gmail.com'
-                            placeholderTextColor={COLORS.subTitle}
-                            style={styles.input}
-                            onPress={() => {}}
+                        <Controller
+                            control={control}
+                            name='email'
+                            defaultValue=''
+                            render={({field: {onBlur,onChange,value}}) => (
+                                 <TextInput 
+                                    placeholder='ravena@gmail.com'
+                                    placeholderTextColor={COLORS.subTitle}
+                                    style={styles.input}
+                                    value={value}
+                                    onBlur={onBlur}
+                                    onChangeText={onChange}
+                                    autoCapitalize='none'
+                                  />
+                            )}
+                        />
+                    </View>
+                </View>
+                    {errors.email && <Text style={styles.errorMessage}>{errors.email.message}</Text>}
+
+                <View style={styles.containerInputBox2}>
+                    <Text style={styles.emailTitle}>Senha</Text>
+                    <View style={styles.containerInput}>
+                        <Ionicons name='lock-closed-outline' size={28} color={COLORS.subTitle}/>
+                        <Controller
+                            control={control}
+                            name='password'
+                            defaultValue=''
+                            render={(({field: {onBlur,onChange,value}}) => (
+                                <TextInput 
+                                    placeholder='********'
+                                    placeholderTextColor={COLORS.subTitle}
+                                    style={styles.input}
+                                    onChangeText={onChange}
+                                    value={value}
+                                    onBlur={onBlur}
+                                />
+                            ))}
                         />
                     </View>
                 </View>
 
-                 <View style={styles.containerInputBox2}>
-                    <Text style={styles.emailTitle}>Senha</Text>
-                    <View style={styles.containerInput}>
-                        <Ionicons name='lock-closed-outline' size={28} color={COLORS.subTitle}/>
-                        <TextInput 
-                            placeholder='ravena@gmail.com'
-                            placeholderTextColor={COLORS.subTitle}
-                            style={styles.input}
-                            onPress={() => {}}
-                        />
-                    </View>
-                </View>
+                {errors.password && <Text style={styles.errorMessage}>{errors.password.message}</Text>}      
 
                 <View>
                     <TouchableOpacity style={styles.btnForgot} onPress={() => {}}>
                         <Text style={styles.textBtn}>Esqueceu a senha?</Text>
                     </TouchableOpacity>
                 </View>
+
+                <View style={styles.containerBtnEntrar}>
+                    <TouchableOpacity style={styles.btnEntrar} onPress={handleSubmit(onSubmit)}>
+                        <Text style={styles.textBtnEntrar}>{isSubmitting ? 'Entrando...' : 'Entrar agora'}</Text>
+                    </TouchableOpacity>
+                    <Ionicons name='arrow-forward-outline' size={20} color={COLORS.white}/>
+                </View>
+                
             </View>
 
             <View style={styles.box3}>
                 <View style={styles.containerBox3}>
-                    <TouchableOpacity style={styles.btnEntrar}>
-                        <Text style={styles.textBtnEntrar}>Entrar</Text>
-                    </TouchableOpacity>
-
                     <View style={styles.containerCriarConta}>
                         <Text style={styles.textCriarConta}>Não tem uma conta?</Text>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={handleScreenCadastrar}>
                             <Text style={styles.textBtnCriarConta}>Criar uma conta</Text>
                         </TouchableOpacity>
                     </View>
